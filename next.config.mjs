@@ -2,7 +2,7 @@
 const nextConfig = {
     reactStrictMode: false,
     images: {
-        domains: ['localhost']
+        domains: ['https://dental-backend-mf9e.onrender.com',"res.cloudinary.com"]
     }
 };
 

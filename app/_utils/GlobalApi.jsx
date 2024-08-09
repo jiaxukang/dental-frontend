@@ -1,7 +1,7 @@
 const { default: axios } = require("axios");
 
 const axiosClient = axios.create({
-    baseURL: 'http://localhost:1337/api',
+    baseURL: 'https://dental-backend-mf9e.onrender.com/api',
 });
 
 axiosClient.defaults.timeout = 10000;

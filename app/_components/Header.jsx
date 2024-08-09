@@ -117,7 +117,7 @@ function Header() {
                                     <DropdownMenuItem className='flex gap-2 items-center cursor-pointer'>
 
                                         <Image src={
-                                            process.env.NEXT_PUBLIC_BACKEND_BASE_URL + category?.attributes?.icon?.data?.[0]?.attributes?.url}
+                                            category?.attributes?.icon?.data?.[0]?.attributes?.url}
                                             alt={category?.attributes?.name}
                                             width={30}
                                             height={30}

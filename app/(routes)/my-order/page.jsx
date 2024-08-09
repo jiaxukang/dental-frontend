@@ -28,12 +28,11 @@ function MyOrder() {
         setUser(user);
         setJwt(jwt);
         getOrders();
-    }, [])
+    }, [jwt])
 
     async function getOrders() {
         try {
             const _orders = await GlobalApi.getOrder(user.id, jwt);
-            console.log(_orders);
             setOrders(_orders);
         } catch (error) {
             toast.error('Something went wrong');

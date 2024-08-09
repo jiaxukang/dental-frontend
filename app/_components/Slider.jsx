@@ -18,7 +18,7 @@ function Slider({ sliderList }) {
             <CarouselContent>
                 {sliderList.map((slider, index) => (
                     <CarouselItem key={index}>
-                        <Image src={process.env.NEXT_PUBLIC_BACKEND_BASE_URL + slider.attributes?.image?.data?.[0]?.attributes?.url}
+                        <Image src={slider.attributes?.image?.data?.[0]?.attributes?.url}
                             width={1000}
                             height={400} alt="slider"
                             className="w-full h-[200px] md:h-[400px] object-cover rounded-2xl"
@@ -29,7 +29,7 @@ function Slider({ sliderList }) {
             <CarouselPrevious />
             <CarouselNext />
         </Carousel>
-        
+
 
     )
 }
