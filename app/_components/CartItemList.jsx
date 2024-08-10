@@ -1,9 +1,8 @@
 "use client"
-import { Button } from '@/components/ui/button'
 import { Trash2Icon } from 'lucide-react'
 import Image from 'next/image'
 import React from 'react'
-import { useEffect } from 'react';
+
 
 function CartItemList({ cartItemList, onDeleteItem }) {
 

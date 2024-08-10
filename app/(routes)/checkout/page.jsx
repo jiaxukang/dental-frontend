@@ -33,6 +33,11 @@ function Checkout() {
             toast.error('Please login to continue');
             router.push('/sign-in');
         }
+        return () => {
+            // Cleanup function to clear data
+            setUser(null);
+            setJwt(null);
+        };
     }, [jwt])
 
     const [subTotal, setSubTotal] = React.useState(0);
@@ -44,6 +49,11 @@ function Checkout() {
 
         setSubTotal(total.toFixed(2));
         setTotalAmount((total * 1.09).toFixed(2));
+        return () => {
+            // Cleanup function to clear data
+            setSubTotal(0);
+            setTotalAmount(0);
+        };
     }, [cartItemList])
     async function getTotalCartItem() {
         try {

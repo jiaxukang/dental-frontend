@@ -28,6 +28,11 @@ function MyOrder() {
         setUser(user);
         setJwt(jwt);
         getOrders();
+        return () => {
+            // Cleanup function to clear data
+            setUser(null);
+            setJwt(null);
+        };
     }, [jwt])
 
     async function getOrders() {

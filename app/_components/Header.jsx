@@ -51,10 +51,19 @@ function Header() {
             setIsAuth(false);
         }
         getTotalCartItem();
+        return () => {
+            // Cleanup function to clear data
+            setUser(null);
+            setJwt(null);
+        };
     }, [jwt, updateCart])
 
     useEffect(() => {
         getCategoryList();
+        return () => {
+            // Cleanup function to clear data
+            setCategoryList([]);
+        };
     }, [])
 
     const [subTotal, setSubTotal] = React.useState(0);
@@ -64,6 +73,10 @@ function Header() {
             total += item.amount;
         });
         setSubTotal(total.toFixed(2));
+        return () => {
+            // Cleanup function to clear data
+            setSubTotal(0);
+        };
 
     }, [cartItemList])
 

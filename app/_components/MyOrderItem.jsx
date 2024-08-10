@@ -2,7 +2,6 @@ import Image from 'next/image'
 import React from 'react'
 
 function MyOrderItem({ item }) {
-    console.log(item);
     return (
         <div className="w-[60%]">
             <div className='grid grid-cols-5  mt-3 items-center'>

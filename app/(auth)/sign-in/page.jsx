@@ -17,10 +17,15 @@ function signIn() {
     const [loader, setLoader] = React.useState(false);
     useEffect(() => {
         const jwt = sessionStorage.getItem('jwt');
-        if(jwt) {
+        if (jwt) {
             router.push('/');
         }
-    },[])
+        return () => {
+            // Cleanup function to clear data
+            setUser(null);
+            setJwt(null);
+        };
+    }, [])
     function onSignIn() {
         setLoader(true);
         GlobalApi.signIn(email, password).then((response) => {
@@ -35,17 +40,17 @@ function signIn() {
         })
     }
     return (
-       <div className="flex items-baseline justify-center my-20">
+        <div className="flex items-baseline justify-center my-20">
             <div className="flex flex-col items-center justify-center p-10 bg-slate-100 border-gray-200">
                 <Image src="/snake-1.png" alt="logo" width={100} height={100} />
                 <h2 className="font-bold text-3xl">Sign In to Account</h2>
                 <h2 className="text-gray-500">Enter your Email and Password to Sign In</h2>
                 <div className="w-full flex flex-col gap-5 mt-7">
                     <Input placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
-                    <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)}/>
-                    <Button disabled={!(email || password)} onClick={() => onSignIn()}>{ loader?<LoaderIcon className="animate-spin"/>:"Sign in"}</Button>
+                    <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+                    <Button disabled={!(email || password)} onClick={() => onSignIn()}>{loader ? <LoaderIcon className="animate-spin" /> : "Sign in"}</Button>
                     <p>
-                        Do not have an account ? 
+                        Do not have an account ?
                         <Link href="/create-account" className="text-blue-500">
                             Click here to create an new account
                         </Link>
@@ -54,8 +59,8 @@ function signIn() {
                 </div>
             </div>
         </div>
-    
-  )
+
+    )
 }
 
 export default signIn

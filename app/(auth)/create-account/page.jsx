@@ -19,7 +19,11 @@ function createAccount() {
         if (jwt) {
             router.push('/');
         }
-    }, [])
+        return () => {
+            // Cleanup function to clear data
+            setJwt(null);
+        };
+    }, [jwt])
     const onCreateAccount = () => {
         setLoader(true);
         GlobalApi.registerUser(username, email, password).then((response) => {

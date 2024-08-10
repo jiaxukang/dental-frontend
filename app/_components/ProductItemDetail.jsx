@@ -30,7 +30,12 @@ function ProductItemDetail({ product }) {
             setUser(user);
             setJwt(jwt);
         }
-    }, [])
+        return () => {
+            // Cleanup function to clear data
+            setUser(null);
+            setJwt(null);
+        };
+    }, [jwt])
 
     async function addToCart() {
         setLoading(true);
