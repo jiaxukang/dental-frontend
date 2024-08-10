@@ -47,7 +47,7 @@ function createAccount() {
                 <div className="w-full flex flex-col gap-5 mt-7">
                     <Input placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)} />
-                    <Input placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
+                    <Input type="email" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
                     <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <Button disabled={!(username || email || password)} onClick={() => onCreateAccount()}>{loader ? <LoaderIcon className="animate-spin" /> : "Create An Account"}</Button>
                     <p>

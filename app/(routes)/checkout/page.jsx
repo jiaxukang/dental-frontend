@@ -102,10 +102,10 @@ function Checkout() {
                     </h2>
                     <div className="grid grid-cols-2 gap-10 mt-3">
                         <Input placeholder="Name" onChange={(e) => setUserName(e.target.value)} />
-                        <Input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+                        <Input type="email" placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
                     </div>
                     <div className="grid grid-cols-2 gap-10 mt-3">
-                        <Input placeholder="Phone" onChange={(e) => setPhone(e.target.value)} />
+                        <Input type="number" placeholder="Phone" onChange={(e) => setPhone(e.target.value)} />
                         <Input placeholder="Zip" onChange={(e) => setZip(e.target.value)} />
                     </div>
                     <div className="mt-3">

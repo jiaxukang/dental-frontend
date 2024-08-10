@@ -36,6 +36,7 @@ function ProductItem({ product }) {
                 </DialogTrigger>
                 <DialogContent>
                     <DialogHeader>
+                        <DialogTitle>Are you absolutely sure?</DialogTitle>
                         <DialogDescription>
                             <ProductItemDetail product={product} />
                         </DialogDescription>

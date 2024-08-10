@@ -52,6 +52,7 @@ const getCarts = (userId, jwt) => {
         }
     }).then(res => {
         const data = res.data.data;
+        console.log(data);
         return data.map((item, index) => ({
             name: item.attributes.products?.data[0].attributes.name,
             quantity: item.attributes.quantity,
@@ -59,7 +60,8 @@ const getCarts = (userId, jwt) => {
             image: item.attributes.products?.data[0].attributes.images.data[0].attributes.url,
             actualPrice: item.attributes.products?.data[0].attributes.mrp,
             id: item.id,
-            product: item.attributes.products?.data[0].id
+            product: item.attributes.products?.data[0].id,
+            size: item.attributes.size
         }));
 
     });

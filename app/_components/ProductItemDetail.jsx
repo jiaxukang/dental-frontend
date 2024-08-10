@@ -8,6 +8,14 @@ import { useState, useEffect } from 'react';
 import GlobalApi from '../_utils/GlobalApi'
 import { toast } from 'sonner'
 import { UpdateCartContext } from '../_context/UpdateCartContext'
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 function ProductItemDetail({ product }) {
     const [productTotalPrice, setProductTotalPrice] = useState(
@@ -18,6 +26,8 @@ function ProductItemDetail({ product }) {
     const [quantity, setQuantity] = useState(1);
     const [user, setUser] = useState(null);
     const [jwt, setJwt] = useState(null);
+    const [size, setSize] = useState('small');
+    const [sizeList, setSizeList] = useState(["small", "medium", "large"]);
     const router = useRouter();
 
     const [loading, setLoading] = useState(false);
@@ -45,15 +55,18 @@ function ProductItemDetail({ product }) {
             return;
         }
         const data = {
+
             data: {
                 quantity: quantity,
                 amount: (quantity * productTotalPrice).toFixed(2),
                 users_permissions_users: user.id,
                 products: product.id,
-                user_id: user.id
+                user_id: user.id,
+                size: size,
             }
 
         }
+        console.log(data);
         await GlobalApi.addToCart(data, jwt).then((res) => {
             toast("Added to Cart")
             setLoading(false);
@@ -63,6 +76,10 @@ function ProductItemDetail({ product }) {
             setLoading(false);
         })
 
+    }
+
+    function changeSize(_size) {
+        setSize(_size);
     }
 
     return (
@@ -85,6 +102,30 @@ function ProductItemDetail({ product }) {
                     </h2>
                 </div>
                 <h2 className='font-medium text-lg'>Quantity {product?.attributes?.itemQuantityType}</h2>
+                <div className='font-medium text-lg'>
+                    <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                            <h2 className='hidden md:flex gap-2 items-center border rounded-full w-[40%] p-1 px-2 bg-slate-200 cursor-pointer'>
+                                size: {size}
+                            </h2>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent>
+                            <DropdownMenuSeparator />
+                            {
+                                sizeList.map((_size) => (
+
+                                    <DropdownMenuItem className='flex gap-2 items-center cursor-pointer' >
+
+                                        <h2 className="text-lg" onClick={() => changeSize(_size)}>{_size}</h2>
+
+                                    </DropdownMenuItem>
+
+                                ))
+                            }
+                        </DropdownMenuContent>
+                    </DropdownMenu>
+
+                </div>
                 <div className='flex flex-col items-baseline gap-3'>
                     <div className="flex gap-3 items-center">
                         <div className='p-2 border flex gap-10 items-center px-5'>

@@ -22,7 +22,6 @@ function signIn() {
         }
         return () => {
             // Cleanup function to clear data
-            setUser(null);
             setJwt(null);
         };
     }, [])
@@ -46,7 +45,7 @@ function signIn() {
                 <h2 className="font-bold text-3xl">Sign In to Account</h2>
                 <h2 className="text-gray-500">Enter your Email and Password to Sign In</h2>
                 <div className="w-full flex flex-col gap-5 mt-7">
-                    <Input placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
+                    <Input type="email" placeholder="name@example.com" onChange={(e) => setEmail(e.target.value)} />
                     <Input type='password' placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
                     <Button disabled={!(email || password)} onClick={() => onSignIn()}>{loader ? <LoaderIcon className="animate-spin" /> : "Sign in"}</Button>
                     <p>

@@ -19,6 +19,7 @@ function CartItemList({ cartItemList, onDeleteItem }) {
                                 <div>
                                     <h2 className="font-bold">{item.name}</h2>
                                     <h2 className="">Quantity {item.quantity}</h2>
+                                    <h2 className="">size {item.size}</h2>
                                     <h2 className="text-lg font-bold">$ {item.amount}</h2>
                                 </div>
 
