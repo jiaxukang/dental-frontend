@@ -1,7 +1,9 @@
-const { default: axios } = require("axios");
 
+const { default: axios } = require("axios");
+const { default: useEffect } = require("react");
+const { default: useState } = require("react");
 const axiosClient = axios.create({
-    baseURL: 'https://dental-backend-mf9e.onrender.com/api',
+    baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
 });
 
 axiosClient.defaults.timeout = 10000;
@@ -100,6 +102,10 @@ const getOrder = (userId, jwt) => {
     });
 }
 
+const useFetch = (url) => {
+    return axiosClient.get(url);
+}
+
 export default {
     getCategory,
     getSlider,
@@ -111,5 +117,6 @@ export default {
     getCarts,
     deleteCart,
     createOrder,
-    getOrder
+    getOrder,
+    useFetch
 }

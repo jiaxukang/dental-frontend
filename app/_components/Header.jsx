@@ -27,6 +27,7 @@ import { useRouter } from 'next/navigation';
 import { UpdateCartContext } from '../_context/UpdateCartContext';
 import CartItemList from './CartItemList';
 import { toast } from 'sonner';
+import SearchCom from './SearchCom';
 
 
 
@@ -144,11 +145,12 @@ function Header() {
                         }
                     </DropdownMenuContent>
                 </DropdownMenu>
+                <SearchCom />
 
-                <div className='md:flex gap-3 items-center border rounded-full p-2 px-5'>
+                {/* <div className='md:flex gap-3 items-center border rounded-full p-2 px-5'>
                     <Search />
                     <input type="text" placeholder="Search" className='outline-none' />
-                </div>
+                </div> */}
             </div>
             <div className='flex gap-5 items-center'>
 
