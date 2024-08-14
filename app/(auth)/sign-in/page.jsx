@@ -20,10 +20,7 @@ function signIn() {
         if (jwt) {
             router.push('/');
         }
-        return () => {
-            // Cleanup function to clear data
-            setJwt(null);
-        };
+
     }, [])
     function onSignIn() {
         setLoader(true);

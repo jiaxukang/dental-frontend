@@ -1,5 +1,5 @@
 
-
+"use client"
 import React from 'react'
 import {
     Carousel,
@@ -16,7 +16,7 @@ function Slider({ sliderList }) {
 
         <Carousel>
             <CarouselContent>
-                {sliderList.map((slider, index) => (
+                {sliderList?.map((slider, index) => (
                     <CarouselItem key={index}>
                         <Image src={slider.attributes?.image?.data?.[0]?.attributes?.url}
                             width={1000}
