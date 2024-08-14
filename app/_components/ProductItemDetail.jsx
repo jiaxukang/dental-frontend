@@ -66,7 +66,6 @@ function ProductItemDetail({ product }) {
             }
 
         }
-        console.log(data);
         await GlobalApi.addToCart(data, jwt).then((res) => {
             toast("Added to Cart")
             setLoading(false);

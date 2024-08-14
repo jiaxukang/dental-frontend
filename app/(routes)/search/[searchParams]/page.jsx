@@ -11,9 +11,6 @@ import { useSearchParams } from "next/navigation";
 export default function searchName(
     { params }
 ) {
-
-    // const result = await GlobalApi.useFetch("/products?filters[name][$containsi]=" + params.searchParams + "&populate=*");
-    // console.log(params.searchParams);
     const [result, setResult] = useState(null);
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get("page")) || 1;

@@ -1,7 +1,5 @@
 
 const { default: axios } = require("axios");
-const { default: useEffect } = require("react");
-const { default: useState } = require("react");
 const axiosClient = axios.create({
     baseURL: process.env.NEXT_PUBLIC_BACKEND_BASE_URL,
 });
@@ -54,7 +52,6 @@ const getCarts = (userId, jwt) => {
         }
     }).then(res => {
         const data = res.data.data;
-        console.log(data);
         return data.map((item, index) => ({
             name: item.attributes.products?.data[0].attributes.name,
             quantity: item.attributes.quantity,

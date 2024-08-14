@@ -102,7 +102,7 @@ function Header() {
             const response = await GlobalApi.getCategory();
             setCategoryList(response.data.data);
         } catch (error) {
-            console.error(error);
+            toast(error);
         }
     }
 

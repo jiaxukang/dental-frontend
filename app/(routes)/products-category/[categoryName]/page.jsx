@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react'
 import TopCategoryList from './_components/TopCategoryList'
 import ProductList from '@/app/_components/ProductList';
 import { useSearchParams } from 'next/navigation';
+import { toast } from 'sonner';
 
 function ProductCategory({ params }) {
     const searchParams = useSearchParams();
@@ -32,11 +33,10 @@ function ProductCategory({ params }) {
 
     async function fetchCategory() {
         try {
-            console.log("fetching category");
             const response = await GlobalApi.getCategory();
             setCategoryList(response);
         } catch (error) {
-            console.error(error);
+            toast("Failed to fetch category list");
         }
     }
 

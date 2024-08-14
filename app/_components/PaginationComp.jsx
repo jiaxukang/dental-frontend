@@ -20,7 +20,6 @@ export function PaginationComponent({ pageCount }) {
     const createPageURL = (pageNumber) => {
         const params = new URLSearchParams(searchParams);
         params.set("page", pageNumber.toString());
-        console.log(`${pathname}?${params.toString()}`);
         return `${pathname}?${params.toString()}`;
     };
 
