@@ -12,11 +12,16 @@ function TopCategoryList({ categoryList }) {
     const [productList, setProductList] = useState(null);
     const searchParams = useSearchParams();
     const currentPage = Number(searchParams.get("page")) || 1;
+    //const [currentPage, setCurrentPage] = useState(Number(searchParams.get("page")) || 1);
 
     async function fetchData() {
-        const _result = await GlobalApi.useFetch("/products?filters[categories][name][$in]=" + selectedCategory + "&sort=createdAt:desc&pagination[page]=" + currentPage + "&pagination[pageSize]=8&populate=*");
+        let _result = null;
+        if (selectedCategory === 'Category') {
+            _result = await GlobalApi.useFetch("/products?sort=createdAt:desc&pagination[page]=" + currentPage + "&pagination[pageSize]=8&populate=*");
+        } else {
+            _result = await GlobalApi.useFetch("/products?filters[categories][name][$in]=" + selectedCategory + "&sort=createdAt:desc&pagination[page]=" + currentPage + "&pagination[pageSize]=8&populate=*");
+        }
 
-        console.log(_result);
         setProductList(_result);
     }
 

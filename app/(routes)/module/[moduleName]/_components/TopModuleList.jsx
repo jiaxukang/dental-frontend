@@ -4,21 +4,16 @@ import Link from 'next/link'
 import React from 'react'
 import { useEffect, useState } from 'react'
 import GlobalApi from '@/app/_utils/GlobalApi'
-import { useSearchParams } from 'next/navigation';
-import { toast } from 'sonner';
 import TopCategoryList from './TopCategoryList'
 
 function TopModuleList({ moduleList, selectedModule }) {
     const [clickName, setClickName] = useState(selectedModule);
-    const searchParams = useSearchParams();
-    const currentPage = Number(searchParams.get("page")) || 1;
+
 
     const [categoryList, setCategoryList] = useState(null);
 
     async function fetchData() {
         const category = await GlobalApi.useFetch("/categories?filters[modules][name][$in]=" + clickName + "&populate=*");
-        const _result = await GlobalApi.useFetch("/products?filters[categories][name][$in]=" + clickName + "&sort=createdAt:desc&pagination[page]=" + currentPage + "&pagination[pageSize]=8&populate=*");
-
         setCategoryList(category);
     }
 
@@ -27,7 +22,7 @@ function TopModuleList({ moduleList, selectedModule }) {
         return () => {
             setCategoryList(null);
         }
-    }, [currentPage, clickName]);
+    }, [clickName]);
 
 
 
