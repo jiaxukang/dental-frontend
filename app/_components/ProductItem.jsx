@@ -24,7 +24,7 @@ function ProductItem({ product }) {
             </h2>
             <div className="flex gap-3">
 
-                {product?.attributes?.sellingPrice && <h2 className="font-bold">&{product?.attributes?.sellingPrice}</h2>}
+                {product?.attributes?.sellingPrice && <h2 className="font-bold">${product?.attributes?.sellingPrice}</h2>}
                 <h2 className={`font-bold ${product.attributes.sellingPrice && 'line-through text-gray-500'}`}>
                     ${product?.attributes?.mrp}
                 </h2>
