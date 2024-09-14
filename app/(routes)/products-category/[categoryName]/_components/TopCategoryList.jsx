@@ -17,7 +17,7 @@ function TopCategoryList({ categoryList, selectedCategory }) {
                                 height={50}
                                 className="group-hover:scale-125 transition-all ease-in-out"
                             />
-                            <h2 className={`text-red-800 group-hover:text-white ${selectedCategory == category.attributes.name && ' text-white'}`}>{category?.attributes?.name}</h2>
+                            <h2 className={`text-red-800  text-wrap w-32 overflow-hidden  text-center group-hover:text-white ${selectedCategory == category.attributes.name && ' text-white'}`}>{category?.attributes?.name}</h2>
                         </Link>
                     ))
                 }

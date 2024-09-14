@@ -11,6 +11,7 @@ import {
 import { toast } from 'sonner';
 import moment from 'moment';
 import MyOrderItem from '@/app/_components/MyOrderItem';
+import { Button } from '@/components/ui/button';
 
 
 function MyOrder() {
@@ -60,6 +61,7 @@ function MyOrder() {
                                             <h2><span className='font-bold mr-2'>Order Date: </span> {moment(order?.createdAt).format('DD/MMM/yyy')}</h2>
                                             <h2><span className='font-bold mr-2'>Total Amount:</span> {order?.total_order_amount}</h2>
                                             <h2><span className='font-bold mr-2'>Status:</span> {order?.status}</h2>
+                                            <Button className="h-8">Payment</Button>
                                         </div>
                                     </CollapsibleTrigger>
                                     <CollapsibleContent>

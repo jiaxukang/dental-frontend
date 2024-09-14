@@ -43,7 +43,7 @@ function ProductCategory({ params }) {
 
     return (
         <div>
-            <h2 className="p-4 bg-red-500 text-white font-bold text-3xl text-center">{params.categoryName}</h2>
+            <h2 className="p-4 bg-red-500 text-white font-bold text-3xl text-center">{decodeURIComponent(params.categoryName)}</h2>
             <TopCategoryList categoryList={categoryList?.data?.data} selectedCategory={params.categoryName} />
             <div className='p-5 md:10'>
                 <ProductList productList={productList?.data?.data} pageCount={productList?.data.meta.pagination.pageCount} />

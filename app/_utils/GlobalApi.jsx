@@ -9,6 +9,10 @@ const getCategory = () => {
     return axiosClient.get('/categories?populate=*');
 }
 
+const getModule = () => {
+    return axiosClient.get('/modules?populate=*');
+}
+
 const getSlider = () => {
     return axiosClient.get('/sliders?populate=*');
 }
@@ -105,6 +109,7 @@ const useFetch = (url) => {
 
 export default {
     getCategory,
+    getModule,
     getSlider,
     getProduct,
     getProductByCategory,

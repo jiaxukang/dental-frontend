@@ -33,7 +33,7 @@ import SearchCom from './SearchCom';
 
 function Header() {
     const [isAuth, setIsAuth] = useState(false);
-    const [categoryList, setCategoryList] = useState([]);
+    const [moduleList, setModuleList] = useState([]);
     const [totalCartItem, setTotalCartItem] = useState(0);
     const [cartItemList, setCartItemList] = useState([]);
     const [user, setUser] = useState(null);
@@ -60,10 +60,10 @@ function Header() {
     }, [jwt, updateCart])
 
     useEffect(() => {
-        getCategoryList();
+        getModuleList();
         return () => {
             // Cleanup function to clear data
-            setCategoryList([]);
+            getModuleList([]);
         };
     }, [])
 
@@ -97,10 +97,10 @@ function Header() {
         router.push('/sign-in');
     }
 
-    async function getCategoryList() {
+    async function getModuleList() {
         try {
-            const response = await GlobalApi.getCategory();
-            setCategoryList(response.data.data);
+            const response = await GlobalApi.getModule();
+            setModuleList(response.data.data);
         } catch (error) {
             toast(error);
         }
@@ -126,8 +126,8 @@ function Header() {
                         <DropdownMenuLabel>All categories</DropdownMenuLabel>
                         <DropdownMenuSeparator />
                         {
-                            categoryList.map((category) => (
-                                <Link key={category?.id} href={'/products-category/' + category.attributes.name}>
+                            moduleList.map((category) => (
+                                <Link key={category?.id} href={'/module/' + category.attributes.name}>
                                     <DropdownMenuItem className='flex gap-2 items-center cursor-pointer'>
 
                                         <Image src={
